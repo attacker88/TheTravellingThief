@@ -19,15 +19,16 @@ public class Population {
         this.mutationProb = mutationProb;
     }
 
-    public void initializePopulation() {
+    public List<Individual> initializePopulation() {
         for (int i = 0; i < popSize; i++) {
             population.add(new Individual(problem));
         }
+        return population;
     }
 
     public void evaluation() {
         for (Individual individual : population) {
-            individual.calculateFitnessFunctionValue();
+            individual.calculateFitnessFunctionValue(); // evaluate fitness
         }
     }
 
@@ -36,6 +37,7 @@ public class Population {
             Individual first = tournament();
             Individual second = tournament();
             Random random = new Random();
+            // todo: Decide if it needs the crossover and mutation by parameters
             if (random.nextInt(100) / 100.0 < crossingProb) {
                 Individual[] newIndividuals = Individual.crossoverPMX(first, second);
                 if (random.nextInt(100) / 100.0 < mutationProb) {
@@ -73,7 +75,8 @@ public class Population {
         return tournamentMembers.get(tournamentMembers.size() - 1);
     }
 
-    public Map<Integer, Double> roulettePrep() {
+    // todo: We don`t need this selection
+    public Map<Integer, Double> roulettePrep() { // This a selection
 
         List<Individual> populationClone = new ArrayList<>();
         for (Individual individual: population){
