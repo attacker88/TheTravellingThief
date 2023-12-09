@@ -53,7 +53,7 @@ public class Greedy {
     }
 
     public static void main(String[] args) {
-        Problem problem = new Problem("resources/medium_4.ttp");
+        Problem problem = new Problem("resources/a280-n279.txt");
         Greedy greedy = new Greedy(problem);
         greedy.getBest();
     }

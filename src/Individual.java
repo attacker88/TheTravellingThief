@@ -109,7 +109,7 @@ public class Individual {
             if ((currentKnapsack + itemToTake[2]) > knapsackCapacity) {
                 return currentKnapsack;
             } else {
-                itemsTaken.add(itemToTake[1]); // dodajemy profit
+                itemsTaken.add(itemToTake[1]); // dodgem profit
                 return currentKnapsack + itemToTake[2]; // itemToTake.weight
             }
         }

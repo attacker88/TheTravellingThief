@@ -18,19 +18,20 @@ public class Controller {
     }
 
     public void run(String path) {
-        Problem problem = new Problem(path);
-        Population population = new Population(problem, populationSize, tournamentSize, crossingProb, mutationProb);
+        Problem problem = new Problem(path); // Initialize a class called Problem, which is used to parse the file
+        Population population = new Population(problem, populationSize, tournamentSize, crossingProb, mutationProb); // Initialize population by tournament selection
         population.initializePopulation();
         for (int i = 0; i < generationsNumber; i++) {
             population.evaluation();
             population.selectionByTournament();
             //population.selectionByRoulette();
-            writeStats(i, population.getPopulationStats());
+            writeStats(i, population.getPopulationStats()); // replacement function
             population.setNextPopulation();
+//            System.out.print(population);
         }
     }
 
-    public void writeStats(int popNumber, double[] stats) {
+    public void writeStats(int popNumber, double[] stats) { // generate result
         String filename = "pies2.csv";
         try (FileWriter fileWriter = new FileWriter(filename, true);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -44,7 +45,7 @@ public class Controller {
 
     public static void main(String[] args) {
         Controller controller = new Controller(500, 100, 0.8, 0.4, 10);
-        controller.run("resources/hard_0.ttp");
+        controller.run("resources/a280-n279.txt");
     }
 
 }
