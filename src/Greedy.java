@@ -15,7 +15,6 @@ public class Greedy {
             nodes.add(node.clone());
         }
         List<Node> visitedNodes = new ArrayList<>();
-        // zaczynamy od pierszego miasta
         visitedNodes.add(nodes.get(0));
 
         int bestIndex;
